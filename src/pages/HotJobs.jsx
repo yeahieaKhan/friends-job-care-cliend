@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
+import JobsCards from "./Shared/JobsCards";
 
 const HotJobs = () => {
-  const [jobs, setJobs] = useState("");
+  const [jobs, setJobs] = useState([""]);
 
   useEffect(() => {
     fetch("http://localhost:3000/jobs")
@@ -10,9 +11,16 @@ const HotJobs = () => {
         setJobs(data);
       });
   }, []);
-  console.log(jobs);
 
-  return <div></div>;
+  return (
+    <div>
+      <div className="grid grid-cols-3 py-20 md:max-w-7xl mx-auto overflow-x-hidden">
+        {jobs?.map((job) => (
+          <JobsCards job={job} key={job._id}></JobsCards>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default HotJobs;
