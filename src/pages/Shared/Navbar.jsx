@@ -70,7 +70,12 @@ const Navbar = () => {
         </div>
         <div className="navbar-end gap-2">
           {user ? (
-            <button onClick={handleLogOut}>LogOut</button>
+            <>
+              <p>
+                <NavLink to={"/addjobs"}>Add-Jobs</NavLink>
+              </p>
+              <button onClick={handleLogOut}>LogOut</button>
+            </>
           ) : (
             <>
               <Link to={"/auth/register"}>
